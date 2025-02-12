@@ -38,24 +38,22 @@ const Sidebar = ({ navigation }) => {
 };
 
 const HomeScreen = () => (
-    <div>
-<View style={styles.screen}>
+    <View style={{ flex: 1 }}>
 
-<Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
-</View>
-{/* <Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
-                <Drawer.Screen name="KOHI COFFEE" component={HomeScreen} />
+        <View style={styles.screen}>
+            <Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
+        </View>
 
-            </Drawer.Navigator> */}
-            <FooterMenu/>
-    </div>
-    
+        <FooterMenu />
+    </View>
+
+
 );
 
 // export default function App() {
 //     return (
 //         <NavigationContainer>
-           
+
 //         </NavigationContainer>
 //     );
 // }
