@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'rea
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import FooterMenu from '../../FooterMenu/FooterMenu';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +47,7 @@ const HomeScreen = () => (
                 <Drawer.Screen name="KOHI COFFEE" component={HomeScreen} />
 
             </Drawer.Navigator> */}
+            <FooterMenu/>
     </div>
     
 );
