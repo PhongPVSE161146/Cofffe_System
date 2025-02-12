@@ -37,22 +37,27 @@ const Sidebar = ({ navigation }) => {
 };
 
 const HomeScreen = () => (
-    <View style={styles.screen}>
+    <div>
+<View style={styles.screen}>
 
-        <Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
-    </View>
-);
-
-export default function App() {
-    return (
-        <NavigationContainer>
-            <Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
+<Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
+</View>
+{/* <Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
                 <Drawer.Screen name="KOHI COFFEE" component={HomeScreen} />
 
-            </Drawer.Navigator>
-        </NavigationContainer>
-    );
-}
+            </Drawer.Navigator> */}
+    </div>
+    
+);
+
+// export default function App() {
+//     return (
+//         <NavigationContainer>
+           
+//         </NavigationContainer>
+//     );
+// }
+export default HomeScreen;
 
 const styles = StyleSheet.create({
     sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20 },

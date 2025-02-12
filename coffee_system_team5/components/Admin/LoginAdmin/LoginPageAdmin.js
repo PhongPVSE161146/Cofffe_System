@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native"; 
 
-// Danh sách tài khoản cứng
-const users = [  // Di chuyển vào trong component
+const users = [
   { email: "admin@gmail.com", password: "123456" },
   { email: "user@gmail.com", password: "password" },
 ];
 
-const LoginPageAdmin = ({ navigation }) => {
+const LoginPageAdmin = () => {
+  const navigation = useNavigation(); 
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secureText, setSecureText] = useState(true);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  // Validate Email
   const validateEmail = (text) => {
     setEmail(text);
     if (text.trim() === "") {
@@ -27,7 +28,6 @@ const LoginPageAdmin = ({ navigation }) => {
     }
   };
 
-  // Validate Password
   const validatePassword = (text) => {
     setPassword(text);
     if (text.includes(" ")) {
@@ -39,41 +39,40 @@ const LoginPageAdmin = ({ navigation }) => {
     }
   };
 
-  // Xử lý đăng nhập
   const handleLogin = () => {
+    console.log("Bắt đầu kiểm tra đăng nhập...");
+    console.log("Email nhập vào:", email);
+    console.log("Mật khẩu nhập vào:", password);
+
     const user = users.find(
       (u) => u.email.trim() === email.trim() && u.password === password
     );
 
     if (!user) {
+      console.log("Đăng nhập thất bại: Sai email hoặc mật khẩu.");
       Alert.alert("Lỗi", "Email hoặc mật khẩu không đúng.");
       return;
     }
 
-    Alert.alert("Thành công", "Đăng nhập thành công!", [
-      { text: "OK", onPress: () => navigation.navigate("HomeScreen") },
-    ]);
+    console.log("Đăng nhập thành công!");
+    console.log("Navigation object:", navigation);
+
+    setTimeout(() => {
+      navigation.navigate("Home"); // 👉 Chuyển trang sau khi đăng nhập
+    }, 500);
   };
-
-
-
-
 
   return (
     <ImageBackground source={require("../../../img/backround.jpg")} style={styles.background}>
       <View style={styles.container}>
         <View style={styles.card}>
-          {/* Logo */}
           <Image source={require("../../../img/logocoffee.png")} style={styles.logo} />
-
-          {/* Chọn vai trò */}
           <View style={styles.roleContainer}>
             <TouchableOpacity>
               <Text style={styles.activeRole}>Chủ nhà hàng / Quản lý</Text>
             </TouchableOpacity>
           </View>
 
-          {/* Input Email */}
           <TextInput
             label="Email"
             mode="outlined"
@@ -81,13 +80,12 @@ const LoginPageAdmin = ({ navigation }) => {
             left={<TextInput.Icon icon="email" />}
             value={email}
             onChangeText={validateEmail}
-            onBlur={() => validateEmail(email)} // Hiển thị lỗi khi rời khỏi ô nhập
+            onBlur={() => validateEmail(email)}
             style={styles.input}
             error={!!emailError}
           />
           {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
-          {/* Input Password */}
           <TextInput
             label="Mật khẩu"
             mode="outlined"
@@ -96,18 +94,16 @@ const LoginPageAdmin = ({ navigation }) => {
             right={<TextInput.Icon icon={secureText ? "eye-off" : "eye"} onPress={() => setSecureText(!secureText)} />}
             value={password}
             onChangeText={validatePassword}
-            onBlur={() => validatePassword(password)} // Hiển thị lỗi khi rời khỏi ô nhập
+            onBlur={() => validatePassword(password)}
             style={styles.input}
             error={!!passwordError}
           />
           {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
-          {/* Nút Quên mật khẩu */}
           <TouchableOpacity>
             <Text style={styles.forgotPassword}>Quên mật khẩu?</Text>
           </TouchableOpacity>
 
-          {/* Nút Đăng nhập */}
           <Button mode="contained" onPress={handleLogin} style={styles.loginButton}>
             Đăng nhập
           </Button>
