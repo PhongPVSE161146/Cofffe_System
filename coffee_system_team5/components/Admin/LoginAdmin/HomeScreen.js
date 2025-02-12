@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'rea
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import FooterMenu from '../../FooterMenu/FooterMenu';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,22 +38,28 @@ const Sidebar = ({ navigation }) => {
 };
 
 const HomeScreen = () => (
-    <View style={styles.screen}>
+    <div>
+<View style={styles.screen}>
 
-        <Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
-    </View>
-);
-
-export default function App() {
-    return (
-        <NavigationContainer>
-            <Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
+<Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
+</View>
+{/* <Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
                 <Drawer.Screen name="KOHI COFFEE" component={HomeScreen} />
 
-            </Drawer.Navigator>
-        </NavigationContainer>
-    );
-}
+            </Drawer.Navigator> */}
+            <FooterMenu/>
+    </div>
+    
+);
+
+// export default function App() {
+//     return (
+//         <NavigationContainer>
+           
+//         </NavigationContainer>
+//     );
+// }
+export default HomeScreen;
 
 const styles = StyleSheet.create({
     sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20 },
