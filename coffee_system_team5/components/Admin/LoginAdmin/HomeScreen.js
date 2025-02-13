@@ -19,28 +19,42 @@ const menuItems = [
     { name: 'Thiết lập nhà hàng', icon: 'cogs' },
 ];
 
-const Sidebar = ({ navigation }) => {
-    return (
-        <ScrollView style={styles.sidebar}>
-            <Image source={require("../../../img/logocoffee.png")} style={styles.logo} />
-            {menuItems.map((item, index) => (
-                <TouchableOpacity
-                    key={index}
-                    style={[styles.menuItem, item.highlight && styles.activeItem, item.disabled && styles.disabledItem]}
-                    onPress={() => !item.disabled && navigation.navigate(item.name)}
-                >
-                    <Icon name={item.icon} size={20} color={item.disabled ? '#999' : 'white'} style={styles.icon} />
-                    <Text style={[styles.menuText, item.disabled && styles.disabledText]}>{item.name}</Text>
-                </TouchableOpacity>
-            ))}
-        </ScrollView>
-    );
-};
+// const Sidebar = ({ navigation }) => {
+//     return (
+//         <ScrollView style={styles.sidebar}>
+//             <Image source={require("../../../img/logocoffee.png")} style={styles.logo} />
+//             {menuItems.map((item, index) => (
+//                 <TouchableOpacity
+//                     key={index}
+//                     style={[styles.menuItem, item.highlight && styles.activeItem, item.disabled && styles.disabledItem]}
+//                     onPress={() => !item.disabled && navigation.navigate(item.name)}
+//                 >
+//                     <Icon name={item.icon} size={20} color={item.disabled ? '#999' : 'white'} style={styles.icon} />
+//                     <Text style={[styles.menuText, item.disabled && styles.disabledText]}>{item.name}</Text>
+//                 </TouchableOpacity>
+//             ))}
+//         </ScrollView>
+//     );
+// };
 
 const HomeScreen = () => (
     <View style={{ flex: 1 }}>
 
         <View style={styles.screen}>
+
+            <ScrollView style={styles.sidebar}>
+                <Image source={require("../../../img/logocoffee.png")} style={styles.logo} />
+                {menuItems.map((item, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        style={[styles.menuItem, item.highlight && styles.activeItem, item.disabled && styles.disabledItem]}
+                        onPress={() => !item.disabled && navigation.navigate(item.name)}
+                    >
+                        <Icon name={item.icon} size={20} color={item.disabled ? '#999' : 'white'} style={styles.icon} />
+                        <Text style={[styles.menuText, item.disabled && styles.disabledText]}>{item.name}</Text>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
             <Text style={styles.bodytext}>Welcome to KOHI COFFEE!</Text>
         </View>
 
@@ -60,7 +74,7 @@ const HomeScreen = () => (
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20 },
+    sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20, marginRight: 1498 },
     logo: { width: 250, height: 150, resizeMode: "contain", marginBottom: 20 },
     menuItem: { flexDirection: 'row', alignItems: 'center', padding: 15 },
     icon: { marginRight: 10 },

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native"; 
-
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const users = [
   { email: "admin@gmail.com", password: "123456" },
   { email: "user@gmail.com", password: "password" },
 ];
 
 const LoginPageAdmin = () => {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ const LoginPageAdmin = () => {
     }
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log("Bắt đầu kiểm tra đăng nhập...");
     console.log("Email nhập vào:", email);
     console.log("Mật khẩu nhập vào:", password);
@@ -55,13 +55,14 @@ const LoginPageAdmin = () => {
     }
 
     console.log("Đăng nhập thành công!");
-    console.log("Navigation object:", navigation);
 
-    setTimeout(() => {
-      navigation.navigate("Home"); // 👉 Chuyển trang sau khi đăng nhập
-    }, 500);
+    try {
+      await AsyncStorage.setItem("user", JSON.stringify(user)); // Lưu thông tin đăng nhập
+      navigation.navigate("Home"); // Chuyển hướng đến trang Home
+    } catch (error) {
+      console.log("Lỗi khi lưu trạng thái đăng nhập:", error);
+    }
   };
-
   return (
     <ImageBackground source={require("../../../img/backround.jpg")} style={styles.background}>
       <View style={styles.container}>
