@@ -70,7 +70,7 @@ const HomeScreen = () => (
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20 },
+    sidebar: { backgroundColor: '#0D2538', flex: 1, paddingVertical: 20, marginRight: 1498 },
     logo: { width: 250, height: 150, resizeMode: "contain", marginBottom: 20 },
     menuItem: { flexDirection: 'row', alignItems: 'center', padding: 15 },
     icon: { marginRight: 10 },
