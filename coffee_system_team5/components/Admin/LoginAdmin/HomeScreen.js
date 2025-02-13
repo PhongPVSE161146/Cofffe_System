@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import FooterMenu from '../../FooterMenu/FooterMenu';
-
-const Drawer = createDrawerNavigator();
 
 const menuItems = [
     { name: 'Tổng quan', icon: 'home' },
@@ -14,7 +10,7 @@ const menuItems = [
     { name: 'Mặt hàng', icon: 'box-open' },
     { name: 'Nhân viên', icon: 'users' },
     { name: 'Khách hàng', icon: 'user-friends' },
-    { name: 'Khuyến mãi', icon: 'tags', },
+    { name: 'Khuyến mãi', icon: 'tags' },
     { name: 'Kho hàng', icon: 'warehouse' },
     { name: 'Thiết lập nhà hàng', icon: 'cogs' },
 ];
