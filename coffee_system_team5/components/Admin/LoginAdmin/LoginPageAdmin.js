@@ -8,7 +8,7 @@ const users = [
   { email: "user@gmail.com", password: "password" },
 ];
 
-const LoginPageAdmin = () => {
+const LoginPageAdmin = () => {     
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");

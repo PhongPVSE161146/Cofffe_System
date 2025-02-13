@@ -1,14 +1,14 @@
-.footermenu {
+/* .footermenu {
     display: flex;
     justify-content: space-around;
     background-color: #3E2723;
     padding-top: 10px;
     padding-bottom: 10px;
-    position: fixed;  /* Cố định footer ở cuối trang */
-    bottom: 0;  /* Đặt footer ở cuối */
+    position: fixed;  
+    bottom: 0; 
     left: 0;
-    width: 100%;  /* Chiều rộng đầy đủ */
-    z-index: 10;  /* Đảm bảo nó hiển thị trên các phần khác */
+    width: 100%;  
+    z-index: 10; 
 }
 
 .menuItem {
@@ -22,4 +22,4 @@
     color: white;
     font-size: 14px;
     margin-top: 5px;
-}
+} */
