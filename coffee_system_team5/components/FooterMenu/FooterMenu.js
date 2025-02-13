@@ -1,7 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import './FooterMenu.css';  // import CSS file
 
 const FooterMenu = ({ navigation }) => {
     const menuItems = [
@@ -13,15 +12,41 @@ const FooterMenu = ({ navigation }) => {
     ];
 
     return (
-        <div className="footermenu">
+        <View style={styles.footermenu}>
             {menuItems.map((item, index) => (
-                <div key={index} className="menuItem" onClick={() => navigation.navigate(item.route)}>
+                <TouchableOpacity 
+                    key={index} 
+                    style={styles.menuItem} 
+                    onPress={() => navigation.navigate(item.route)}
+                >
                     <Icon name={item.icon} size={24} color="#fff" />
-                    <span className="menuText">{item.name}</span>
-                </div>
+                    <Text style={styles.menuText}>{item.name}</Text>
+                </TouchableOpacity>
             ))}
-        </div>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    footermenu: {
+        position: 'absolute',
+        bottom: 0,
+        left: 250, // Cộng với chiều rộng sidebar
+        right: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: '#333',
+        paddingVertical: 12,
+        paddingHorizontal: 10,
+    },
+    menuItem: {
+        alignItems: 'center',
+    },
+    menuText: {
+        color: '#fff',
+        fontSize: 12,
+        marginTop: 4,
+    },
+});
 
 export default FooterMenu;
